@@ -4,13 +4,21 @@ let reg = /[a-z]/ig;
 const inputs =document.querySelectorAll('input');
 
 const patterns = {
-    telephone:/^\d{11}$/
+    telephone:/^\d{11}$/,
+    username:/^[a-z\d]{5,12}$/i,
+    password:/^[\w@-]{8,20}$/,
+    slug:/^[a-z\d-]{8,20}$/
 }
 
 //validation function
 function validate(field, regex) {
 
-    console.log(regex.test(field.value));
+    if(regex.test(field.value)){
+        field.className="valid";
+    }
+    else {
+        field.className="invalid";
+    }
 }
 
 inputs.forEach((input) =>{
